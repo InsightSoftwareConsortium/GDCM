@@ -89,6 +89,12 @@ option(GDCM_LEGACY_SILENT "Silence all legacy code messages." OFF)
 mark_as_advanced(GDCM_LEGACY_REMOVE GDCM_LEGACY_SILENT)
 
 
+# Build-tree paths are recorded only for the test suite, so an installed header carries none.
+if(GDCM_BUILD_TESTING)
+  set(GDCM_CONFIGURE_SOURCE_DIR "${GDCM_SOURCE_DIR}")
+  set(GDCM_CONFIGURE_EXECUTABLE_OUTPUT_PATH "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}")
+  set(GDCM_CONFIGURE_LIBRARY_OUTPUT_PATH "${GDCM_LIBRARY_OUTPUT_DIR}")
+endif()
 configure_file(
   "${GDCM_SOURCE_DIR}/Source/Common/gdcmConfigure.h.in"
   "${GDCM_BINARY_DIR}/Source/Common/gdcmConfigure.h"
