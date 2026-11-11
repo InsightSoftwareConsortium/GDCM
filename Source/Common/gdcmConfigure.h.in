@@ -36,6 +36,7 @@
 #define PUB_DICT_PATH "@GDCM_PUB_DICT_PATH@"
 
 #cmakedefine GDCM_BUILD_TESTING
+#cmakedefine GDCM_STANDALONE
 
 #ifdef GDCM_BUILD_TESTING
 /* Useful in particular for loadshared where the full path
