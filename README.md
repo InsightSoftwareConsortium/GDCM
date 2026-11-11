@@ -18,8 +18,8 @@ where:
   or `master` when it is built on the upstream `master` tip.
 - `SHA{7}` is the 7-character hash of the overlay tip commit.
 
-For example, `for/itk-gdcm-master-6f26892` carries the overlay on upstream
-`master` at `2cd05d132`, with tip commit `6f26892`.
+For example, `for/itk-gdcm-master-4f20194` carries the overlay on upstream
+`master` at `2cd05d132`, with tip commit `4f20194`.
 
 The default branch of this fork is `welcome`, an orphan branch holding only
 this document. ITK pins a `for/itk-gdcm-*` branch through the `tag` variable in
@@ -39,11 +39,12 @@ The overlay has two layers, in this order:
    request each change came from. When a pull request lands upstream, drop it
    on the next update. The goal is an empty first layer.
 2. **ITK build overlay.** Commits ITK needs that have no upstream pull request
-   yet: routing the codecs through ITK's mangled `itk_*.h` headers, building
-   the RLE sources into `gdcmMSFF`, namespacing socket++, honoring
-   `*_LIBRARIES` that ITK sets before configuring GDCM, and an absolute URL for
-   the `Testing/Data` submodule (the relative `../gdcmdata` URL has no
-   counterpart in this organization).
+   yet: routing the codecs through ITK's mangled `itk_*.h` headers, the
+   settings for building inside ITK (RLE sources compiled into `gdcmMSFF`,
+   socket++ namespaced as `gdcmsocketxx`, `CMAKE_DL_LIBS` and default resource
+   paths handled for an embedded build), and an absolute URL for the
+   `Testing/Data` submodule (the relative `../gdcmdata` URL has no counterpart
+   in this organization).
 
    Every commit in this layer except the submodule URL is meant to become an
    upstream pull request, generalized where needed (for example, a CMake
@@ -99,7 +100,7 @@ done
 6. Replay the ITK build overlay from the previous fork branch:
 
 ```
-PREV=for/itk-gdcm-master-6f26892
+PREV=for/itk-gdcm-master-4f20194
 git fetch origin "${PREV}"
 # The overlay commits are the non-merge commits after the last PR merge.
 git log --oneline --first-parent --no-merges "$(git merge-base origin/${PREV} ${BASE})..origin/${PREV}"
