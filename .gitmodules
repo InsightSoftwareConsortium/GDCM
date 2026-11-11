@@ -1,3 +1,3 @@
 [submodule "Testing/Data"]
 	path = Testing/Data
-	url = ../gdcmdata
+	url = https://github.com/malaterre/gdcmdata.git
