@@ -1334,7 +1334,8 @@ opj_image_t* rawtoimage(const char *inputbuffer8, opj_cparameters_t *parameters,
   //gdcm_assert( bitsallocated == 8 );
   for(int i = 0; i < numcomps; i++) {
     cmptparm[i].prec = bitsstored;
-    if( bitsstored <= 8 )
+    // the decoder sizes its output from the precision, keep 16-bit containers
+    if( bitsstored <= 8 && bitsallocated <= 16 )
       cmptparm[i].prec = bitsallocated;
     cmptparm[i].bpp = (bitsallocated == 12) ? 16 : bitsallocated;  // 12-bit uses 16-bit container
     cmptparm[i].sgnd = sign;
