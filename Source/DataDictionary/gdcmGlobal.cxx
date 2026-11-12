@@ -86,7 +86,7 @@ Global::Global()
     gdcm_assert( Internals->GlobalDefs.IsEmpty() );
     // Same goes for GlobalDefs:
     //Internals->GlobalDefs.LoadDefaults();
-    Internals->LoadDefaultPaths();
+    //Internals->LoadDefaultPaths();
     }
 }
 
