@@ -98,6 +98,7 @@ bool RAWCodec::DecodeBytes(const char* inBytes, size_t inBufferLength,
       {
       gdcmWarningMacro( "Requesting too much data. Truncating result" );
       memcpy(outBytes, inBytes, inBufferLength);
+      memset(outBytes + inBufferLength, 0, inOutBufferLength - inBufferLength);
       }
     return true;
     }
@@ -144,6 +145,7 @@ bool RAWCodec::DecodeBytes(const char* inBytes, size_t inBufferLength,
   {
     gdcmWarningMacro( "Requesting too much data. Truncating result" );
     memcpy(outBytes, str.c_str(), len);
+    memset(outBytes + len, 0, inOutBufferLength - len);
   }
 
   return r;
