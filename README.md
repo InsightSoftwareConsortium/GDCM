@@ -18,8 +18,8 @@ where:
   or `master` when it is built on the upstream `master` tip.
 - `SHA{7}` is the 7-character hash of the overlay tip commit.
 
-For example, `for/itk-gdcm-master-b7bf293` carries the overlay on upstream
-`master` at `2cd05d132`, with tip commit `b7bf293`.
+For example, `for/itk-gdcm-master-8ba2cce` carries the overlay on upstream
+`master` at `2cd05d132`, with tip commit `8ba2cce`.
 
 The default branch of this fork is `welcome`, an orphan branch holding only
 this document. ITK pins a `for/itk-gdcm-*` branch through the `tag` variable in
@@ -100,7 +100,7 @@ done
 6. Replay the ITK build overlay from the previous fork branch:
 
 ```
-PREV=for/itk-gdcm-master-b7bf293
+PREV=for/itk-gdcm-master-8ba2cce
 git fetch origin "${PREV}"
 # The overlay commits are the non-merge commits after the last PR merge.
 git log --oneline --first-parent --no-merges "$(git merge-base origin/${PREV} ${BASE})..origin/${PREV}"
