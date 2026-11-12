@@ -209,7 +209,7 @@ if(APPLE)
     target_link_libraries(gdcmCommon LINK_PRIVATE ${COREFOUNDATION_LIBRARY})
   endif()
 endif()
-if(UNIX)
+if(UNIX AND ITK_DYNAMIC_LOADING)
   target_link_libraries(gdcmCommon LINK_PRIVATE ${CMAKE_DL_LIBS})
 endif()
 
